@@ -6,7 +6,11 @@ var fs = require('fs')
 twitpic();
 
 var server = http.createServer(function (request, response) {
-  response.writeHead(200, {"Content-Type": "text/plain"});
+  response.writeHead(200, {
+		"Content-Type": "text/plain",
+		"Access-Control-Allow-Origin": "*"
+	});
+	response.header();
   var arrayJSON = fs.readFileSync('array.json', 'utf8', function (err, data) {
     if (err) throw err;
     return(data);
