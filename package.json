@@ -8,6 +8,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node": "0.0.0"
+    "fs": "0.0.2",
+    "node": "0.0.0",
+    "twit": "^1.1.18"
   }
 }
