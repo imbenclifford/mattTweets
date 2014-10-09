@@ -10,7 +10,7 @@ var server = http.createServer(function (request, response) {
 		"Content-Type": "text/plain",
 		"Access-Control-Allow-Origin": "*"
 	});
-	response.header();
+	
   var arrayJSON = fs.readFileSync('array.json', 'utf8', function (err, data) {
     if (err) throw err;
     return(data);
@@ -19,7 +19,7 @@ var server = http.createServer(function (request, response) {
   
 });
 
-	server.listen(8000);
+	server.listen(8080);
 
 
 
