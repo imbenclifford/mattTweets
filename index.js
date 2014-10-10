@@ -19,7 +19,7 @@ var server = http.createServer(function (request, response) {
   
 });
   
-	server.listen(8080);
+	server.listen(process.env.PORT || 3000);
 
 
 
