@@ -7,6 +7,7 @@ var server = http.createServer(function (request, response) {
     "Content-Type": "text/plain",
     "Access-Control-Allow-Origin": "*"
     });
+  console.log("hey!")
   twitpic();
 
   fs.readFile('array.json', 'utf8', function (err, data) {

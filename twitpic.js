@@ -34,11 +34,10 @@ module.exports = function () {
   
     mongo.MongoClient.connect(process.env.MONGOURL, function(err, database){
       var collection = database.collection("scubadog")
-      console.log("She's the one.")
       collection.insert({
         name: "Bill",
         age: 23,
-        haircolor: "strawberry-blondey"
+        haircolor: "blondey"
       }, function(err, data){
         })
     })
