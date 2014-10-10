@@ -33,7 +33,7 @@ module.exports = function () {
        });
   
     mongo.MongoClient.connect(process.env.MONGOURL, function(err, database){
-      var collection = database.collection("scubadog")
+      var collection = database.collection("tester")
       collection.insert({
         name: "Bill",
         age: 23,
