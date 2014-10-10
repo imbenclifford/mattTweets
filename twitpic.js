@@ -11,6 +11,16 @@ var T = new Twit({
 
 var mongo = require('mongodb');
 
+mongo.MongoClient.connect(process.env.MONGOURL, function(err, database){
+      var collection = database.collection("tester")
+      collection.insert({
+        name: "Bill",
+        age: 23,
+        haircolor: "blondey"
+      }, function(err, data){
+        })
+    })
+
 module.exports = function () {
 
   var origArray = [];
@@ -31,16 +41,6 @@ module.exports = function () {
                 });
            }
        });
-  
-    mongo.MongoClient.connect(process.env.MONGOURL, function(err, database){
-      var collection = database.collection("tester")
-      collection.insert({
-        name: "Bill",
-        age: 23,
-        haircolor: "blondey"
-      }, function(err, data){
-        })
-    })
-  
+    
   });
 };
