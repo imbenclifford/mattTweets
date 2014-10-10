@@ -9,6 +9,8 @@ var T = new Twit({
    access_token_secret: credentials.access_token_secret
 });
 
+var mongo = require('mongodb');
+
 module.exports = function () {
 
   var origArray = [];
@@ -29,5 +31,17 @@ module.exports = function () {
                 });
            }
        });
-    });
+  
+    mongo.MongoClient.connect(process.env.MONGOURL, function(err, database){
+  var collection = database.collection("scubadog")
+  collection.insert({
+    name: "Bill",
+    age: 23,
+    haircolor: "blonde"
+  }, function(err, data){
+    })
+  
+})
+  
+  });
 };
