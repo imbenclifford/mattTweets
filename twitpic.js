@@ -33,15 +33,15 @@ module.exports = function () {
        });
   
     mongo.MongoClient.connect(process.env.MONGOURL, function(err, database){
-  var collection = database.collection("scubadog")
-  collection.insert({
-    name: "Bill",
-    age: 23,
-    haircolor: "blondey"
-  }, function(err, data){
+      var collection = database.collection("scubadog")
+      console.log("She's the one.")
+      collection.insert({
+        name: "Bill",
+        age: 23,
+        haircolor: "strawberry-blondey"
+      }, function(err, data){
+        })
     })
-  
-})
   
   });
 };
