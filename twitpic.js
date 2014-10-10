@@ -37,7 +37,7 @@ module.exports = function () {
   collection.insert({
     name: "Bill",
     age: 23,
-    haircolor: "blonde"
+    haircolor: "blondey"
   }, function(err, data){
     })
   
