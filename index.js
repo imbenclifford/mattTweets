@@ -11,7 +11,7 @@ var server = http.createServer(function (request, response) {
 
   fs.readFile('array.json', 'utf8', function (err, data) {
     if (err) throw err;
-    response.end(data);
+    response.end(data + "hey");
   });
 });
 	server.listen(process.env.PORT || 3000);
