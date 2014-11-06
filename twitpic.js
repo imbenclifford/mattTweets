@@ -1,6 +1,7 @@
 var Twit = require('twit');
 var fs = require('fs');
 var credentials = require('./credentials');
+var mongo = require('mongodb');
 
 var T = new Twit({
    consumer_key: credentials.consumer_key,
@@ -9,19 +10,19 @@ var T = new Twit({
    access_token_secret: credentials.access_token_secret
 });
 
-var mongo = require('mongodb');
-
-mongo.MongoClient.connect(process.env.MONGOURL, function(err, database){
-      var collection = database.collection("tester")
-      collection.insert({
-        name: "Bill",
-        age: 23,
-        haircolor: "blondey"
-      }, function(err, data){
-        })
-    })
-
 module.exports = function () {
+
+  mongo.MongoClient.connect(process.env.MONGOURL, function(err, db){
+      var collection = db.collection("tester")
+      var newEntry = {
+        name: "John",
+        age: 14,
+        haircolor: "yellowish"
+      }
+    collection.insert(newEntry, function(err, data){
+        if (err) console.log('Problem with posting a new entry');
+    });
+  });
 
   var origArray = [];
 
