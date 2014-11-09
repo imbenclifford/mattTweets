@@ -14,25 +14,21 @@ module.exports = function () {
 
   var origArray = [];
 
-  T.get('search/tweets', { q: '#CollectiveAcademy' }, function(err, data, response) {
-    var mango = data.statuses;
+	T.get('statuses/user_timeline', { screen_name: 'matthewclifford', count: 100 }, function(err, data, response) {
+    var tweets = data
+		var ranTweets = [];
+		for (var i=0; i<4; i++){
+			var ranNumb = Math.round(Math.random() * 100);
+			ranTweets[i] = tweets[ranNumb].text
+		};
 
-       mango.forEach(function(tweet){
-           if (tweet.entities.media && (tweet.entities.media[0].type)==="photo"){
-            var pic = tweet.entities.media[0].media_url;
-            var stringPic = pic.toString();
-            console.log(stringPic);
-            var newPic = {
-              imgUrl: stringPic
-            }
-            mongo.MongoClient.connect(process.env.MONGOURL || credentials.db, function(err, db){
-              var collection = db.collection("twitpics")
-              collection.insert(newPic, function(err, data){
+       ranTweets.forEach(function(tweet){
+           mongo.MongoClient.connect(process.env.MONGOURL || credentials.db, function(err, db){
+              var collection = db.collection(credentials.collection)
+							collection.insert({tweet: tweet}, function(err, data){
                   if (err) console.log('Problem with posting a new entry');
               })
             })
-           }
-       });
-    
-  });
-};
+  		});
+ });
+}

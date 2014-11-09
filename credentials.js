@@ -3,7 +3,8 @@ var credentials = {
    consumer_secret: 'gkYIk08uufXLXTyMEfmKB0sX0A4mDe4BRcPNCX6vYIemVmcBjb', 
    access_token: '2813311471-tuLTn0j6mkTDK74H4BcRg3qh0xvEBIdGCpz3Zxc',
    access_token_secret: 'psxk2F9aBYhBwj479vwGQTTYGP1Any7ChrHJFOFzfJ2oq',
-   db: 'mongodb://BC:BCRox@linus.mongohq.com:10029/coderunnertests'
+   db: 'mongodb://BC:BCRox@linus.mongohq.com:10029/coderunnertests',
+	 collection: 'matttweets'
   };
 
 module.exports = credentials
