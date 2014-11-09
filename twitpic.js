@@ -21,14 +21,12 @@ module.exports = function () {
 			var ranNumb = Math.round(Math.random() * 100);
 			ranTweets[i] = tweets[ranNumb].text
 		};
-
-       ranTweets.forEach(function(tweet){
-           mongo.MongoClient.connect(process.env.MONGOURL || credentials.db, function(err, db){
-              var collection = db.collection(credentials.collection)
-							collection.insert({tweet: tweet}, function(err, data){
-                  if (err) console.log('Problem with posting a new entry');
-              })
-            })
-  		});
+		
+		var jsonTweets = JSON.stringify(ranTweets)
+		fs.writeFile('array.json', jsonTweets, function (err) {
+			if (err) throw err;
+			console.log('It\'s saved!');
+		});
+		
  });
 }
